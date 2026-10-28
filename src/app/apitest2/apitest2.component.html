@@ -1,0 +1,125 @@
+<main class="weather-page">
+  <div class="weather-shell">
+    <header class="weather-header">
+      <a class="weather-brand" routerLink="/" aria-label="返回首頁">
+        <span class="brand-mark">W</span>
+        <span>WEATHER<span class="brand-light"> / TAINAN</span></span>
+      </a>
+      <div class="live-status"><span class="live-dot"></span>中央氣象署即時資料</div>
+    </header>
+
+    @if (loading) {
+      <section class="state-panel" aria-live="polite">
+        <span class="loading-orb">◌</span>
+        <h1>正在更新天氣</h1>
+        <p>為你整理臺南各地最新預報…</p>
+      </section>
+    } @else if (errorMessage) {
+      <section class="state-panel error-panel" aria-live="polite">
+        <span class="loading-orb">!</span>
+        <h1>暫時無法取得資料</h1>
+        <p>{{ errorMessage }}</p>
+      </section>
+    } @else {
+      <section class="intro-row">
+        <div>
+          <p class="eyebrow">TAIWAN · SOUTHERN REGION</p>
+          <h1>城市天氣<span>，一眼掌握。</span></h1>
+          <p class="intro-copy">即時天氣與未來預報，陪你安排每一段行程。</p>
+        </div>
+        <label class="location-picker">
+          <span class="picker-icon" aria-hidden="true">⌖</span>
+          <span class="sr-only">選擇臺南地區</span>
+          <select [value]="selectedLocationIndex" (change)="changeLocation($event)">
+            @for (location of locations; track $index) {
+              <option [value]="$index">臺南市・{{ location.LocationName }}</option>
+            }
+          </select>
+          <span class="select-chevron">⌄</span>
+        </label>
+      </section>
+
+      <section class="dashboard-grid" aria-label="天氣概況">
+        <article class="current-card">
+          <div class="card-glow"></div>
+          <div class="current-topline">
+            <div>
+            <span class="overline">目前天氣</span>
+              <h2>{{ locationName }}<span class="city-suffix">，臺南</span></h2>
+            </div>
+            <span class="sun-symbol" aria-hidden="true">{{ weatherIcon }}</span>
+          </div>
+          <div class="current-reading">
+            <span class="temperature">{{ temperature }}</span><span class="degree">°</span>
+            <div class="condition-copy">
+              <strong>{{ weatherDescription }}</strong>
+              <span>{{ activeDate }} ・ {{ currentEntry?.DataTime?.slice(11, 16) || '--:--' }}</span>
+            </div>
+          </div>
+          <div class="current-footer">
+            <span><i class="mini-icon">↗</i> 今日預報</span>
+            <span>資料時間 {{ updatedAt.slice(11, 16) || '--:--' }}</span>
+          </div>
+        </article>
+
+        <article class="outlook-card">
+          <div class="section-heading">
+            <div>
+              <span class="overline">FORECAST</span>
+              <h2>時段預報</h2>
+            </div>
+            <div class="day-tabs" role="tablist" aria-label="選擇預報日期">
+              @for (day of availableDays; track day.date; let index = $index) {
+                <button
+                  type="button"
+                  role="tab"
+                  [attr.aria-selected]="selectedDayIndex === index"
+                  [class.selected]="selectedDayIndex === index"
+                  (click)="selectDay(index)"
+                >{{ day.label }}</button>
+              }
+            </div>
+          </div>
+          <div class="hourly-list">
+            @for (hour of hourlyForecast; track $index) {
+              <div class="hour-item">
+                <span class="hour-time">{{ hour.time }}</span>
+                <span class="hour-icon" [attr.aria-label]="hour.weather">{{ hour.icon }}</span>
+                <strong>{{ hour.temperature }}°</strong>
+                <span class="hour-humidity">{{ hour.humidity }}% RH</span>
+              </div>
+            } @empty {
+              <p class="empty-note">此日期目前沒有可顯示的時段資料。</p>
+            }
+          </div>
+        </article>
+      </section>
+
+      <section class="metrics-section">
+        <div class="section-heading metrics-heading">
+          <div>
+            <span class="overline">WEATHER DETAILS</span>
+            <h2>天氣細節</h2>
+          </div>
+          <span class="detail-caption">{{ locationName }}・{{ activeDate }}</span>
+        </div>
+        <div class="metric-grid">
+          @for (metric of metrics; track metric.label) {
+            <article class="metric-card">
+              <span class="metric-icon" aria-hidden="true">{{ metric.icon }}</span>
+              <div class="metric-label">{{ metric.label }}</div>
+              <div class="metric-reading">{{ metric.value }}<span>{{ metric.unit }}</span></div>
+              <div class="metric-note">{{ metric.note }}</div>
+              <div class="metric-track"><span [style.width.%]="metric.progress"></span></div>
+            </article>
+          }
+        </div>
+      </section>
+
+      <footer class="weather-footer">
+        <span>資料來源：中央氣象署開放資料平台</span>
+        <span>天氣資訊僅供生活規劃參考</span>
+      </footer>
+    }
+  </div>
+</main>

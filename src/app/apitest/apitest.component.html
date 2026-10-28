@@ -1,0 +1,102 @@
+<div class="backstyle" [style.background-image]="'url(back.png)'">
+  <!-- @for (data of arraytest.records.Locations; track $index) {
+  <h3>{{ data.DatasetDescription }}</h3>
+
+  @for (data2 of data.Location; track $index) {
+    <p>{{ data2.LocationName }}</p>
+
+    @for (data3 of data2.WeatherElement; track $index) {
+      <p>{{ data3.ElementName }}</p>
+      @for (data4 of data3.Time; track $index) {
+        <p>{{ data4.DataTime }}</p>
+      }
+    }
+  }
+} -->
+  <div class="leftdiv">
+    <select class="box2" (change)="changeLocation($event)">
+      <option value="0">新營區</option>
+      <option value="1">鹽水區</option>
+      <option value="2">白河區</option>
+      <option value="3">柳營區</option>
+      <option value="4">後壁區</option>
+      <option value="5">東山區</option>
+      <option value="6">麻豆區</option>
+      <option value="7">下營區</option>
+      <option value="8">六甲區</option>
+      <option value="9">官田區</option>
+      <option value="10">大內區</option>
+      <option value="11">佳里區</option>
+      <option value="12">學甲區</option>
+      <option value="13">西港區</option>
+      <option value="14">七股區</option>
+      <option value="15">將軍區</option>
+      <option value="16">北門區</option>
+      <option value="17">新化區</option>
+      <option value="18">善化區</option>
+      <option value="19">新市區</option>
+      <option value="20">安定區</option>
+      <option value="21">山上區</option>
+      <option value="22">玉井區</option>
+      <option value="23">楠西區</option>
+      <option value="24">南化區</option>
+      <option value="25">左鎮區</option>
+      <option value="26">仁德區</option>
+      <option value="27">歸仁區</option>
+      <option value="28">關廟區</option>
+      <option value="29">龍崎區</option>
+      <option value="30">永康區</option>
+      <option value="31">東區</option>
+      <option value="32">南區</option>
+      <option value="33">北區</option>
+      <option value="34">安南區</option>
+      <option value="35">安平區</option>
+      <option value="36">中西區</option>
+    </select>
+    <img src="cloud.png" class="box3" />
+    <p class="title">{{ locationName }}</p>
+    <p class="font1">{{ elementName }}:{{ Temperature }}</p>
+    <p class="font1">{{ dataTime }}</p>
+    <p class="font1">風速:{{ speed }}</p>
+    <p class="font1">{{ weather }}{{ icon }}</p>
+    <p class="font1">{{ value }}</p>
+    <button (click)="buttonAddTime()">明天資訊</button>
+    <button (click)="buttonDelTime()">昨天資訊</button>
+  </div>
+
+  <div class="rightdiv">
+    <div class="intivdiv">{{ dataTime2 }}</div>
+    <div class="tooldiv">
+      <div class="inleftdiv">時間</div>
+      <div class="intidiv">{{ rightDataTime[0] }}</div>
+      <div class="intidiv">{{ rightDataTime[1] }}</div>
+      <div class="intidiv">{{ rightDataTime[2] }}</div>
+      <div class="intidiv">{{ rightDataTime[3] }}</div>
+      <div class="intidiv">{{ rightDataTime[4] }}</div>
+    </div>
+    <div class="tooldiv">
+      <div class="inleftdiv">濕度</div>
+      <div class="intidiv">{{ relativeHumidityData[0] }}</div>
+      <div class="intidiv">{{ relativeHumidityData[1] }}</div>
+      <div class="intidiv">{{ relativeHumidityData[2] }}</div>
+      <div class="intidiv">{{ relativeHumidityData[3] }}</div>
+      <div class="intidiv">{{ relativeHumidityData[4] }}</div>
+    </div>
+    <div class="tooldiv">
+      <div class="inleftdiv">溫度</div>
+      <div class="intidiv">{{ TemperatureData[0] }}</div>
+      <div class="intidiv">{{ TemperatureData[1] }}</div>
+      <div class="intidiv">{{ TemperatureData[2] }}</div>
+      <div class="intidiv">{{ TemperatureData[3] }}</div>
+      <div class="intidiv">{{ TemperatureData[4] }}</div>
+    </div>
+    <div class="tooldiv">
+      <div class="inleftdiv">天氣</div>
+      <div class="intidiv">{{ iconNumberData[0] }}</div>
+      <div class="intidiv">{{ iconNumberData[1] }}</div>
+      <div class="intidiv">{{ iconNumberData[2] }}</div>
+      <div class="intidiv">{{ iconNumberData[3] }}</div>
+      <div class="intidiv">{{ iconNumberData[4] }}</div>
+    </div>
+  </div>
+</div>

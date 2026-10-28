@@ -1,0 +1,251 @@
+.myclass {
+    color: red;
+    padding: 5vw;
+}
+
+.active {
+    color: #ffffff;
+    background-color: rgb(255 255 255 / 22%);
+}
+
+.site-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    width: 100%;
+    margin: 0;
+    padding: 12px 20px;
+}
+
+.brand {
+    flex: 0 0 auto;
+    color: #173b57;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+
+    span {
+        margin-left: 5px;
+        color: #4386a6;
+        font-weight: 500;
+    }
+}
+
+.menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+    padding: 0 14px 0 17px;
+    border: 1px solid rgb(255 255 255 / 55%);
+    border-radius: 13px;
+    color: #173b57;
+    background: rgb(255 255 255 / 30%);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 55%);
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    backdrop-filter: blur(14px) saturate(160%);
+
+    &:hover {
+        background: rgb(255 255 255 / 55%);
+        transform: translateY(-1px);
+    }
+}
+
+.menu-icon {
+    display: grid;
+    gap: 4px;
+    width: 18px;
+
+    span {
+        display: block;
+        height: 2px;
+        border-radius: 2px;
+        background: #24516d;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    &.is-open span:first-child {
+        transform: translateY(6px) rotate(45deg);
+    }
+
+    &.is-open span:nth-child(2) {
+        opacity: 0;
+    }
+
+    &.is-open span:last-child {
+        transform: translateY(-6px) rotate(-45deg);
+    }
+}
+
+.top-nav {
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 4px;
+    flex: 0 0 100%;
+    min-width: 190px;
+    margin-top: 10px;
+    padding: 9px;
+    border: 1px solid rgb(255 255 255 / 45%);
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgb(255 255 255 / 78%), rgb(235 246 252 / 62%));
+    box-shadow: 0 12px 36px rgb(15 35 50 / 18%), inset 0 1px 0 rgb(255 255 255 / 70%);
+    -webkit-backdrop-filter: blur(22px) saturate(170%);
+    backdrop-filter: blur(22px) saturate(170%);
+}
+
+.nav-link {
+    gap: 8px;
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 0 16px;
+    border: 0;
+    border-radius: 11px;
+    color: #173b57;
+    background: transparent;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+    &:hover {
+        color: #102e45;
+        background-color: rgb(255 255 255 / 30%);
+    }
+}
+
+.nav-indicator {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #8aa8ba;
+    box-shadow: 0 0 0 3px rgb(138 168 186 / 14%);
+}
+
+.nav-link.active .nav-indicator {
+    background: #2e83a8;
+    box-shadow: 0 0 0 3px rgb(46 131 168 / 18%);
+}
+
+.page-content {
+    min-height: calc(100vh - 110px);
+}
+
+.nav-button {
+    appearance: none;
+}
+
+@media (max-width: 600px) {
+    .site-header {
+        padding: 10px 12px;
+    }
+
+    .top-nav {
+        min-width: min(220px, calc(100vw - 32px));
+    }
+
+    .nav-link {
+        padding: 0 10px;
+        font-size: 13px;
+    }
+}
+
+.btn-class {
+    background-color: red;
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 8px;
+    transition: 0.3s;
+
+    &:hover {
+        background-color: rgb(108, 5, 5);
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+}
+
+
+.divTest {
+    margin-bottom: 10px;
+    width: 100px;
+    height: 100px;
+}
+
+.divCard {
+    width: 250px;
+    padding: 25px;
+    border-radius: box-shadow;
+    text-align: center;
+    background-color: lightgray;
+    box-shadow: 0px 0px 10px gray;
+}
+
+.divouter {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boxout {
+    width: 50%;
+    height: 100px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 12px;
+}
+
+.greenbox {
+    width: 15%;
+    height: 80px;
+    background-color: green;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.redbox {
+    width: 15%;
+    height: 40px;
+    background-color: red;
+    margin-top: 40px;
+    margin-bottom: 0px;
+}
+
+.bluebox {
+    width: 15%;
+    height: 40px;
+    background-color: blue;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.orangebox {
+    width: 15%;
+    height: 40px;
+    background-color: orange;
+    margin-top: 0px;
+    margin-bottom: 40px;
+}
+
+.yellowbox {
+    width: 15%;
+    height: 80px;
+    background-color: yellow;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

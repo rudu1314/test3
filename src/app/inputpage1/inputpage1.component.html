@@ -1,0 +1,47 @@
+<br />
+<a>input練習</a>
+<br />
+<input [(ngModel)]="userName" />
+<input [(ngModel)]="userEmail" />
+
+<app-inputpage2
+  [userName2]="userName"
+  [userEmail2]="userEmail"
+></app-inputpage2>
+
+<a>local練習</a>
+<br />
+<h1>歡迎{{ displayTitle }}</h1>
+<input [(ngModel)]="localName" />
+<button (click)="saveButton()">save</button>
+
+<a>for練習</a>
+<br />
+@for (data of array2; track $index) {
+  {{ data.id }}:{{ data.name }},
+  @for (data of data.userData; track $index) {
+    {{ data.userId }}
+  }
+}
+<br />
+<a>for練習題目</a>
+<br />
+@for (data of array; track $index) {
+  @if (data.id == 1) {
+    {{ data.id }}:{{ data.name }},
+  }
+}
+
+<br />
+<a>for練習題目2</a>
+<br />
+
+@for (data of userArray; track $index) {
+  <span class="outdiv">{{ data.userName }}({{ data.lev }})</span>
+  <ul class="insidediv">
+    @for (data2 of data.props; track $index) {
+      <li>{{ data2.propsName }}{{ data2.amount }}</li>
+    }
+  </ul>
+  <br />
+}
